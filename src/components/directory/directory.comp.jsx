@@ -2,7 +2,7 @@ import { Component } from "react";
 import React from "react";
 import './directory.style.scss';
 
-import MenuItem from '../menu-items/menu-items.components'
+import MenuItem from '../menu-items/menu-items.comp'
 
 
 class Directory extends Component {
@@ -15,7 +15,7 @@ class Directory extends Component {
                     title: 'hats',
                     imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
                     id: 1,
-                    linkUrl:'hats'
+                    linkUrl:'shop/hats'
                   },
 
                   {
