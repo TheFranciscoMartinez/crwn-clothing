@@ -4,6 +4,12 @@ import FormInput from "./form-input/form-input.comp";
 import CustomButton from "../custom-button/custom-button.comp";
 import {signInWithGoogle} from '../../firebase/firebase.utils.js'
 
+import {auth, createUserProfileDocument } from '../../firebase/firebase.utils'
+import firebase from 'firebase/compat/app';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
+
+
 class SignIn extends Component { 
     constructor(props){
         super(props)
@@ -14,11 +20,24 @@ class SignIn extends Component {
             };      
     }
 
-    handleSubmit = event => { 
-        event.preventDefault();
 
-        this.setState({email:'', password:''});
-    };
+    handleSubmit = async event => { 
+        event.preventDefault();
+        
+        const{email, password} = this.state;
+
+        try{
+            await signInWithEmailAndPassword(auth, email, password);
+            this.setState({email:'', password:''});           
+
+        } catch(error){ 
+            console.log(error);
+        } 
+    }; 
+
+
+
+
 
     handleChange = event =>{  
         const {value, name} = event.target;
